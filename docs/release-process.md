@@ -209,7 +209,7 @@ does a manual `workflow_dispatch` run.
 
 ### `macos-intel.yml`
 
-The Intel Mac build follows the Linux AppImage's pattern: `release.yml` does
+The Intel-based Mac build follows the Linux AppImage's pattern: `release.yml` does
 not mention it, and it starts from Release's `workflow_run` event only once a
 tag's Release run has **succeeded**. An Intel failure leaves the published
 release without its `_x64` assets and `latest.json` without `darwin-x86_64`:
@@ -250,7 +250,7 @@ From the release's commit, on GitHub's runners:
    `scripts/add-updater-platform.mjs` verifies the archive's signature against
    `plugins.updater.pubkey` and adds `darwin-x86_64` and `darwin-x86_64-app`
    to the release's `latest.json`, leaving the `darwin-aarch64` entries as
-   they were; finally it appends an "Install (Intel Mac)" section to the
+   they were; finally it appends an "Install (Intel-based Mac)" section to the
    release notes once.
 
 The Apple silicon asset names are unchanged, so the website's main Download
