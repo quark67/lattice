@@ -7,8 +7,8 @@ How a Lattice release is actually cut today. Everything below is derived from
 and `src-tauri/tauri.conf.json`; if you change one of those, change this
 document with it.
 
-Releases target **Apple Silicon macOS** (`--target aarch64-apple-darwin`,
-`minimumSystemVersion: 14.0`). An **Intel Mac** build (`x86_64-apple-darwin`,
+Releases target **Apple silicon macOS** (`--target aarch64-apple-darwin`,
+`minimumSystemVersion: 14.0`). An **Intel-based Mac** build (`x86_64-apple-darwin`,
 [below](#macos-intelyml)) and an **experimental x86_64 Linux AppImage**
 ([below](#linux-appimageyml)) are added to the release afterwards, each only
 when its own checks pass; neither ever delays or blocks the Apple silicon
@@ -89,7 +89,7 @@ without a lead keeps showing the last one that had one.
 
 ## What `release.yml` does
 
-One job on `macos-latest` (Apple Silicon), with `contents: write` so it can
+One job on `macos-latest` (Apple silicon), with `contents: write` so it can
 create the Release and upload assets.
 
 1. **Checkout** with `fetch-depth: 0` — the release notes need the full tag
@@ -99,7 +99,7 @@ create the Release and upload assets.
    range as `- <subject> (<short hash>)`, and skips the `Release v…` commit
    itself. Falls back to "Maintenance release." when the range is empty. Puts
    `.github/release-notes/<tag>.md` above that list when the file exists. Appends
-   the Apple Silicon install blurb and a `**Full Changelog**` compare link, then
+   the Apple silicon install blurb and a `**Full Changelog**` compare link, then
    passes the whole thing to the build step through a heredoc-delimited
    `$GITHUB_OUTPUT`.
 3. **Toolchains.** pnpm 10, Node 22, Bun 1.4.4, stable Rust with the `aarch64-apple-darwin` target.
